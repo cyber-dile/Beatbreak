@@ -1,0 +1,1157 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/game/white.png" type="Texture" id=2]
+[ext_resource path="res://assets/game/savetofile.png" type="Texture" id=3]
+[ext_resource path="res://assets/game/backtomenu.png" type="Texture" id=4]
+[ext_resource path="res://assets/game/songsettings.png" type="Texture" id=5]
+[ext_resource path="res://assets/game/properties.png" type="Texture" id=6]
+[ext_resource path="res://assets/game/edit.png" type="Texture" id=7]
+[ext_resource path="res://assets/game/placing.png" type="Texture" id=8]
+[ext_resource path="res://assets/game/import.png" type="Texture" id=9]
+[ext_resource path="res://resources/scenes/Editor/Scripts/BeatTick.gd" type="Script" id=10]
+[ext_resource path="res://resources/scenes/Editor/Scripts/RTButton.gd" type="Script" id=11]
+[ext_resource path="res://resources/scenes/Editor/Scripts/NTButton.gd" type="Script" id=12]
+[ext_resource path="res://resources/scenes/Editor/Scripts/BPMMarker.gd" type="Script" id=13]
+[ext_resource path="res://resources/scenes/Editor/Editor.gd" type="Script" id=14]
+[ext_resource path="res://resources/scenes/Editor/Scripts/Snap.gd" type="Script" id=15]
+[ext_resource path="res://resources/scenes/Editor/Scripts/Properties.gd" type="Script" id=16]
+[ext_resource path="res://resources/scenes/Editor/Scripts/ImportButton.gd" type="Script" id=17]
+[ext_resource path="res://resources/scenes/Editor/Scripts/SSButton.gd" type="Script" id=18]
+[ext_resource path="res://resources/scenes/Editor/Scripts/NoteEx.gd" type="Script" id=19]
+[ext_resource path="res://assets/game/close.png" type="Texture" id=20]
+[ext_resource path="res://resources/scenes/Editor/Scripts/NumberEnter.gd" type="Script" id=21]
+[ext_resource path="res://resources/scenes/Editor/Scripts/CloseImport.gd" type="Script" id=22]
+[ext_resource path="res://resources/scenes/Editor/Scripts/TextEnter.gd" type="Script" id=23]
+[ext_resource path="res://resources/scenes/Editor/Scripts/ColorEnter.gd" type="Script" id=24]
+[ext_resource path="res://resources/scenes/Editor/Scripts/PropEditor.gd" type="Script" id=25]
+[ext_resource path="res://resources/scenes/Editor/Scripts/BPMEditor.gd" type="Script" id=26]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 1 )
+
+[node name="Editor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.054902, 0.0627451, 0.0901961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sidescroll" type="Node2D" parent="."]
+
+[node name="TrackBGs" type="Node2D" parent="Sidescroll"]
+
+[node name="NewTrack" type="ColorRect" parent="Sidescroll"]
+margin_left = 608.0
+margin_right = 672.0
+margin_bottom = 720.0
+color = Color( 1, 1, 1, 0.2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sidescroll/NewTrack"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+margin_left = 64.0
+margin_top = -224.0
+margin_right = 1232.0
+margin_bottom = -160.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 1 )
+text = "NEW TRACK + NEW TRACK + NEW TRACK + NEW TRACK + NEW TRACK"
+align = 1
+valign = 1
+
+[node name="Button" type="TextureButton" parent="Sidescroll/NewTrack"]
+margin_right = 64.0
+margin_bottom = 720.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RemTrack" type="ColorRect" parent="Sidescroll"]
+visible = false
+margin_left = 688.0
+margin_right = 752.0
+margin_bottom = 720.0
+color = Color( 1, 0, 0, 0.12549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sidescroll/RemTrack"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+margin_left = 64.0
+margin_top = -349.0
+margin_right = 1482.0
+margin_bottom = -285.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 1 )
+text = "REMOVE TRACK + REMOVE TRACK + REMOVE TRACK + REMOVE TRACK + REMOVE TRACK"
+align = 1
+valign = 1
+
+[node name="Button" type="TextureButton" parent="Sidescroll/RemTrack"]
+margin_right = 64.0
+margin_bottom = 720.0
+script = ExtResource( 11 )
+
+[node name="Container" type="Node2D" parent="Sidescroll"]
+position = Vector2( 640, 592 )
+
+[node name="Scroller" type="Node2D" parent="Sidescroll/Container"]
+
+[node name="Tracks" type="Node2D" parent="Sidescroll/Container/Scroller"]
+
+[node name="Markers" type="Node2D" parent="Sidescroll/Container/Scroller"]
+
+[node name="BPMMarker" type="Node2D" parent="Sidescroll/Container/Scroller/Markers"]
+visible = false
+modulate = Color( 1, 0.784314, 0, 1 )
+position = Vector2( -160, 0 )
+script = ExtResource( 13 )
+
+[node name="ColorRect" type="ColorRect" parent="Sidescroll/Container/Scroller/Markers/BPMMarker"]
+margin_left = -64.0
+margin_top = -1.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sidescroll/Container/Scroller/Markers/BPMMarker"]
+margin_left = -64.0
+margin_top = -32.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 2 )
+text = "120
+BPM"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="Sidescroll/Container/Scroller/Markers/BPMMarker"]
+margin_left = -104.0
+margin_top = -16.0
+margin_right = -72.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndMarker" type="Node2D" parent="Sidescroll/Container/Scroller/Markers"]
+visible = false
+modulate = Color( 1, 0, 0.333333, 1 )
+position = Vector2( -160, 0 )
+script = ExtResource( 13 )
+
+[node name="ColorRect" type="ColorRect" parent="Sidescroll/Container/Scroller/Markers/EndMarker"]
+margin_left = -80.0
+margin_top = -1.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sidescroll/Container/Scroller/Markers/EndMarker"]
+margin_left = -80.0
+margin_top = -32.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 2 )
+text = "SONG END
+0:00"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeatTick" type="Control" parent="Sidescroll"]
+margin_left = 576.0
+margin_top = -1568.0
+margin_right = 592.0
+margin_bottom = 2752.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hitbar" type="ColorRect" parent="Sidescroll"]
+margin_left = 480.0
+margin_top = 591.0
+margin_right = 592.0
+margin_bottom = 593.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sidescroll"]
+margin_left = 304.0
+margin_top = 560.0
+margin_right = 560.0
+margin_bottom = 624.0
+custom_fonts/font = SubResource( 3 )
+text = "Beat 0
+0:00"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Track" type="ColorRect" parent="Sidescroll"]
+visible = false
+margin_left = 608.0
+margin_right = 672.0
+margin_bottom = 720.0
+color = Color( 0.113725, 0.117647, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sidescroll/Track"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+margin_top = 656.0
+margin_right = 64.0
+margin_bottom = 720.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="BPMButton" type="TextureButton" parent="."]
+modulate = Color( 1, 0.784314, 0, 1 )
+margin_left = 16.0
+margin_top = 656.0
+margin_right = 64.0
+margin_bottom = 704.0
+hint_tooltip = "Create a new BPM Marker at the given position"
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="Snap" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 592.0
+margin_right = 64.0
+margin_bottom = 640.0
+hint_tooltip = "Change the snap- left click to increase, right click to decrease, hold CTRL to change by increments of 1"
+button_mask = 3
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Snap"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 48.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "1/2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveToFile" type="TextureButton" parent="."]
+margin_left = 1216.0
+margin_top = 16.0
+margin_right = 1264.0
+margin_bottom = 64.0
+hint_tooltip = "Save to file (Saves all charts to a file, in the appdata directory named charts/[songid].json)"
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenu" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 64.0
+hint_tooltip = "Go back to the menu (Will keep edits in memory- will not be overwritten until game restart)"
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SongSettings" type="TextureButton" parent="."]
+margin_left = 1152.0
+margin_top = 16.0
+margin_right = 1200.0
+margin_bottom = 64.0
+hint_tooltip = "Open song settings"
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Properties" type="TextureButton" parent="."]
+margin_left = 1216.0
+margin_top = 80.0
+margin_right = 1264.0
+margin_bottom = 128.0
+hint_tooltip = "Open song properties"
+texture_normal = ExtResource( 6 )
+expand = true
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Import" type="TextureButton" parent="."]
+margin_left = 1216.0
+margin_top = 656.0
+margin_right = 1264.0
+margin_bottom = 704.0
+hint_tooltip = "Import .sm file (All notes will get converted to single taps)"
+texture_normal = ExtResource( 9 )
+expand = true
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Duplicate" type="TextureButton" parent="."]
+margin_left = 1216.0
+margin_top = 592.0
+margin_right = 1264.0
+margin_bottom = 640.0
+hint_tooltip = "Duplicate selection (First note will be snapped to current position)"
+texture_normal = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteEx" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 19 )
+
+[node name="ColorRect" type="ColorRect" parent="NoteEx"]
+margin_left = -32.0
+margin_top = -4.0
+margin_right = 32.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionBox" type="ColorRect" parent="."]
+color = Color( 1, 1, 1, 0.501961 )
+
+[node name="BPMEditor" type="ColorRect" parent="."]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.392157 )
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="BPMEditor"]
+margin_left = 480.0
+margin_top = 260.0
+margin_right = 800.0
+margin_bottom = 420.0
+color = Color( 0.0666667, 0.0627451, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Topbar" type="ColorRect" parent="BPMEditor/BG"]
+margin_right = 320.0
+margin_bottom = 32.0
+color = Color( 1, 0.784314, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="BPMEditor/BG/Topbar"]
+modulate = Color( 1, 0.784314, 0, 1 )
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="BPMEditor/BG/Topbar"]
+margin_left = 32.0
+margin_right = 288.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 6 )
+text = "Edit BPM Marker"
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="BPMEditor/BG"]
+margin_left = 292.0
+margin_top = 4.0
+margin_right = 316.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 20 )
+expand = true
+
+[node name="Time" type="Label" parent="BPMEditor/BG"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 98.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 7 )
+text = "Time (ms):"
+
+[node name="NumberEnter" type="TextureButton" parent="BPMEditor/BG/Time"]
+margin_left = 96.0
+margin_right = 288.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="BPMEditor/BG/Time/NumberEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 184.0
+margin_bottom = 32.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BPM" type="Label" parent="BPMEditor/BG"]
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 98.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 7 )
+text = "Bpm:"
+
+[node name="NumberEnter" type="TextureButton" parent="BPMEditor/BG/BPM"]
+margin_left = 96.0
+margin_right = 288.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 21 )
+minus = false
+
+[node name="Label" type="Label" parent="BPMEditor/BG/BPM/NumberEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 184.0
+margin_bottom = 32.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" type="TextureButton" parent="BPMEditor"]
+margin_left = 1240.0
+margin_top = 680.0
+margin_right = 1272.0
+margin_bottom = 712.0
+texture_normal = ExtResource( 20 )
+expand = true
+
+[node name="Label" type="Label" parent="BPMEditor/Delete"]
+margin_left = -264.0
+margin_right = -8.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 8 )
+text = "Delete Marker"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SongEditor" type="ColorRect" parent="."]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="SongEditor"]
+margin_left = 320.0
+margin_top = 144.0
+margin_right = 960.0
+margin_bottom = 576.0
+color = Color( 0.0666667, 0.0627451, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Topbar" type="ColorRect" parent="SongEditor/BG"]
+margin_right = 640.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="SongEditor/BG/Topbar"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/Topbar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 32.0
+margin_right = 288.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 6 )
+text = "Edit BPM Marker"
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="SongEditor/BG"]
+margin_left = 612.0
+margin_top = 4.0
+margin_right = 636.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SongName" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 105.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 7 )
+text = "Song Name"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/SongName"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SongEditor/BG/SongName/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "Song Name"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artist" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 98.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 7 )
+text = "Artist"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/Artist"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/Artist/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "Artist Name"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 144.0
+margin_right = 98.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 7 )
+text = "Credits"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/Credits"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/Credits/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "Created by @cyberdile"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ID" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 192.0
+margin_right = 98.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 7 )
+text = "Song ID"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/ID"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/ID/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "new-song-xxx"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicPath" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 240.0
+margin_right = 110.0
+margin_bottom = 272.0
+custom_fonts/font = SubResource( 7 )
+text = "Music Path"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/MusicPath"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/MusicPath/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "res://"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScenePath" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 288.0
+margin_right = 110.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 7 )
+text = "Scene Path"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/ScenePath"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/ScenePath/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "res://"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImagePath" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 336.0
+margin_right = 110.0
+margin_bottom = 397.0
+custom_fonts/font = SubResource( 7 )
+text = "Image Path"
+
+[node name="TextEnter" type="TextureButton" parent="SongEditor/BG/ImagePath"]
+margin_left = 96.0
+margin_right = 608.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/ImagePath/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 504.0
+margin_bottom = 32.0
+text = "res://"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Diff" type="Label" parent="SongEditor/BG"]
+margin_left = 16.0
+margin_top = 384.0
+margin_right = 110.0
+margin_bottom = 445.0
+custom_fonts/font = SubResource( 7 )
+text = "Chart Diff."
+
+[node name="NumberEnter" type="TextureButton" parent="SongEditor/BG/Diff"]
+margin_left = 96.0
+margin_right = 160.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 21 )
+minus = false
+limit = 3
+decimal = false
+
+[node name="Label" type="Label" parent="SongEditor/BG/Diff/NumberEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 56.0
+margin_bottom = 32.0
+text = "1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChartColor" type="Label" parent="SongEditor/BG"]
+margin_left = 192.0
+margin_top = 384.0
+margin_right = 297.0
+margin_bottom = 445.0
+custom_fonts/font = SubResource( 7 )
+text = "Chart Color"
+
+[node name="ColorEnter" type="TextureButton" parent="SongEditor/BG/ChartColor"]
+margin_left = 112.0
+margin_right = 240.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 24 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/ChartColor/ColorEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 120.0
+margin_bottom = 32.0
+text = "1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Players" type="Label" parent="SongEditor/BG"]
+margin_left = 464.0
+margin_top = 384.0
+margin_right = 569.0
+margin_bottom = 445.0
+custom_fonts/font = SubResource( 7 )
+text = "Players"
+
+[node name="NumberEnter" type="TextureButton" parent="SongEditor/BG/Players"]
+margin_left = 80.0
+margin_right = 160.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="SongEditor/BG/Players/NumberEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 120.0
+margin_bottom = 32.0
+text = "1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" type="TextureButton" parent="SongEditor"]
+margin_left = 1240.0
+margin_top = 680.0
+margin_right = 1272.0
+margin_bottom = 712.0
+texture_normal = ExtResource( 20 )
+expand = true
+
+[node name="Label" type="Label" parent="SongEditor/Delete"]
+margin_left = -264.0
+margin_right = -8.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 8 )
+text = "Delete Marker"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropEditor" type="ColorRect" parent="."]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.392157 )
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="PropEditor"]
+margin_left = 320.0
+margin_top = 144.0
+margin_right = 960.0
+margin_bottom = 576.0
+color = Color( 0.0666667, 0.0627451, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Topbar" type="ColorRect" parent="PropEditor/BG"]
+margin_right = 640.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="PropEditor/BG/Topbar"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="PropEditor/BG/Topbar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 32.0
+margin_right = 288.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 6 )
+text = "Edit Song Properties"
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="PropEditor/BG"]
+margin_left = 612.0
+margin_top = 4.0
+margin_right = 636.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PropEditor/BG"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 161.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 9 )
+text = "Property Name"
+
+[node name="Label2" type="Label" parent="PropEditor/BG"]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 321.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 9 )
+text = "Property Type"
+
+[node name="Label3" type="Label" parent="PropEditor/BG"]
+margin_left = 352.0
+margin_top = 64.0
+margin_right = 608.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 9 )
+text = "Default Value"
+align = 1
+
+[node name="Container" type="Control" parent="PropEditor/BG"]
+margin_top = 96.0
+margin_right = 640.0
+margin_bottom = 432.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroller" type="Node2D" parent="PropEditor/BG/Container"]
+
+[node name="Example" type="Control" parent="PropEditor/BG/Container"]
+margin_right = 640.0
+margin_bottom = 80.0
+
+[node name="PName" type="TextureButton" parent="PropEditor/BG/Container/Example"]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PropEditor/BG/Container/Example/PName"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 120.0
+margin_bottom = 64.0
+text = "Property Name"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PType" type="TextureButton" parent="PropEditor/BG/Container/Example"]
+margin_left = 192.0
+margin_top = 8.0
+margin_right = 320.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PropEditor/BG/Container/Example/PType"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 120.0
+margin_bottom = 64.0
+text = "integer"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PValue" type="TextureButton" parent="PropEditor/BG/Container/Example"]
+margin_left = 352.0
+margin_top = 8.0
+margin_right = 608.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PropEditor/BG/Container/Example/PValue"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 248.0
+margin_bottom = 64.0
+text = "0"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DelProp" type="TextureButton" parent="PropEditor/BG"]
+margin_left = 612.0
+margin_top = 404.0
+margin_right = 636.0
+margin_bottom = 428.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewProp" type="TextureButton" parent="PropEditor/BG"]
+margin_left = 4.0
+margin_top = 404.0
+margin_right = 28.0
+margin_bottom = 428.0
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PropEditor"]
+margin_left = 16.0
+margin_right = 148.0
+margin_bottom = 720.0
+text = "Valid property types:
+keybind
+menu
+integer
+boolean"
+valign = 1
+
+[node name="ImportSM" type="ColorRect" parent="."]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="ImportSM"]
+margin_left = 400.0
+margin_top = 260.0
+margin_right = 880.0
+margin_bottom = 420.0
+color = Color( 0.0666667, 0.0627451, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Topbar" type="ColorRect" parent="ImportSM/BG"]
+margin_right = 480.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="ImportSM/BG/Topbar"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="ImportSM/BG/Topbar"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 32.0
+margin_right = 288.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 6 )
+text = "Import .sm File"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Import" type="TextureButton" parent="ImportSM/BG"]
+margin_left = 452.0
+margin_top = 132.0
+margin_right = 476.0
+margin_bottom = 156.0
+texture_normal = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="ImportSM/BG"]
+margin_left = 452.0
+margin_top = 4.0
+margin_right = 476.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 20 )
+expand = true
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path" type="Label" parent="ImportSM/BG"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 198.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 7 )
+text = "File Dir
+(Relative to user://)"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEnter" type="TextureButton" parent="ImportSM/BG/Path"]
+margin_left = 96.0
+margin_right = 448.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="ImportSM/BG/Path/TextEnter"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_right = 344.0
+margin_bottom = 32.0
+valign = 1

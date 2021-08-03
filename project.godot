@@ -1,0 +1,212 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "Beatmapper",
+"language": "GDScript",
+"path": "res://source/classes/Beatmapper.gd"
+}, {
+"base": "Object",
+"class": "ChartData",
+"language": "GDScript",
+"path": "res://source/classes/ChartData.gd"
+}, {
+"base": "Node",
+"class": "Note",
+"language": "GDScript",
+"path": "res://source/classes/Note.gd"
+}, {
+"base": "Object",
+"class": "NoteData",
+"language": "GDScript",
+"path": "res://source/classes/NoteData.gd"
+}, {
+"base": "Node",
+"class": "Scorebank",
+"language": "GDScript",
+"path": "res://source/classes/Scorebank.gd"
+}, {
+"base": "Object",
+"class": "SongData",
+"language": "GDScript",
+"path": "res://source/classes/SongData.gd"
+}, {
+"base": "Object",
+"class": "Threshold",
+"language": "GDScript",
+"path": "res://source/classes/Threshold.gd"
+}, {
+"base": "Node",
+"class": "Track",
+"language": "GDScript",
+"path": "res://source/classes/Track.gd"
+}, {
+"base": "Object",
+"class": "TrackData",
+"language": "GDScript",
+"path": "res://source/classes/TrackData.gd"
+} ]
+_global_script_class_icons={
+"Beatmapper": "",
+"ChartData": "",
+"Note": "",
+"NoteData": "",
+"Scorebank": "",
+"SongData": "",
+"Threshold": "",
+"Track": "",
+"TrackData": ""
+}
+
+[application]
+
+config/name="Beatbreak"
+run/main_scene="res://resources/scenes/Menu/Menu.tscn"
+boot_splash/image="res://assets/game/black.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://assets/game/beatbreakLogo.png"
+
+[autoload]
+
+Util="*res://source/singletons/Util/Util.gd"
+Data="*res://source/singletons/Data/Data.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_home={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_end={
+"deadzone": 0.5,
+"events": [  ]
+}
+menu-up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+menu-down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+menu-left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+menu-right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+menu-select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+ ]
+}
+menu-back={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777220,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+nudge-up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
+ ]
+}
+nudge-down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"unicode":0,"echo":false,"script":null)
+ ]
+}
+nudge-left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"unicode":0,"echo":false,"script":null)
+ ]
+}
+nudge-right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":76,"unicode":0,"echo":false,"script":null)
+ ]
+}
+delete-selection={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777224,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,174 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/scenes/Select/Song.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="Song" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -16.0
+margin_right = -1024.0
+margin_bottom = -704.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 32.0
+color = Color( 0.866667, 0.866667, 0.866667, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 56.0
+margin_top = -4.0
+margin_right = 504.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Artist Name - Song Name"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Difficulty" type="ColorRect" parent="."]
+margin_right = 48.0
+margin_bottom = 32.0
+color = Color( 1, 0.2, 0.247059, 1 )
+
+[node name="Label" type="Label" parent="Difficulty"]
+margin_top = -4.0
+margin_right = 48.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "020"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Outline" type="Node2D" parent="."]
+visible = false
+modulate = Color( 1, 0.2, 0.247059, 1 )
+z_index = 5
+
+[node name="ColorRect" type="ColorRect" parent="Outline"]
+margin_left = -4.0
+margin_top = -4.0
+margin_right = 516.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Outline"]
+margin_left = -4.0
+margin_top = -4.0
+margin_bottom = 36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Outline"]
+margin_left = 512.0
+margin_top = -4.0
+margin_right = 516.0
+margin_bottom = 36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Outline"]
+margin_left = -4.0
+margin_top = 32.0
+margin_right = 516.0
+margin_bottom = 36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Node2D" parent="."]
+visible = false
+
+[node name="0" type="ColorRect" parent="Buttons"]
+margin_left = 48.0
+margin_right = 216.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Buttons/0"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_top = -4.0
+margin_right = 160.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "EDIT CHART"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="ColorRect" parent="Buttons"]
+margin_left = 344.0
+margin_right = 512.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Buttons/2"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_top = -4.0
+margin_right = 160.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "NEW CHART"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="ColorRect" parent="Buttons"]
+margin_left = 216.0
+margin_right = 344.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Buttons/1"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_top = -4.0
+margin_right = 120.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 512.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
