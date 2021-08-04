@@ -29,6 +29,13 @@ func get_song(song, chart):
 		var players = song.players
 		var index = song.id + "-" + str(chart)
 		var arr = get_array(index)
+		if (arr and arr[1].size() != song.players):
+			for i in range(scores.size()):
+				var v = scores[i]
+				if v[0] == index:
+					scores.remove(i)
+					break
+			arr = null
 		if (not arr is Array):
 			var new_arr = [index, []]
 			for i in range(players):
