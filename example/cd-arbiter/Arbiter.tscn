@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resources/charts/cd-arbiter-backup/ScoreDisplay.gd" type="Script" id=1]
+[ext_resource path="res://resources/charts/cd-arbiter-backup/ArbiterTrack.gd" type="Script" id=2]
+[ext_resource path="res://resources/charts/cd-arbiter-backup/ArbiterNote.gd" type="Script" id=3]
+[ext_resource path="res://resources/charts/cd-arbiter-backup/Arbiter.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 1, 0.1, 0.1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 5 )
+
+[node name="Arbiter" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.965926, 0.0669873, 0.25, 0, 0.965926, -0.258819, -0.258819, 0.25, 0.933013, 0, 0, -8 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+
+[node name="Track0" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -5 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Track0"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="NoteEx" type="MeshInstance" parent="Track0"]
+mesh = SubResource( 2 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="Track1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -2, -5 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Track1"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="NoteEx" type="MeshInstance" parent="Track1"]
+mesh = SubResource( 2 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="Track2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2, -5 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Track2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="NoteEx" type="MeshInstance" parent="Track2"]
+mesh = SubResource( 2 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="Track3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -2, -5 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Track3"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="NoteEx" type="MeshInstance" parent="Track3"]
+mesh = SubResource( 2 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="ScoreDisplay" type="Label" parent="."]
+margin_right = 1264.0
+margin_bottom = 704.0
+custom_fonts/font = SubResource( 3 )
+text = "Score: 0"
+align = 2
+valign = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

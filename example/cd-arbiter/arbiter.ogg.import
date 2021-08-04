@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/arbiter.ogg-c0e99f7028d68f90a98ed30cfc236b0c.oggstr"
+
+[deps]
+
+source_file="res://resources/charts/cd-arbiter-backup/arbiter.ogg"
+dest_files=[ "res://.import/arbiter.ogg-c0e99f7028d68f90a98ed30cfc236b0c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
