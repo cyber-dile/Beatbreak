@@ -85,7 +85,7 @@ func set_loop(new, round_beat: float = 1.0):
 	if (stream):
 		stream.loop = new
 	loop = new
-	if (loop):
+	if (loop and stream):
 		track_length = round(get_beat(stream.get_length() * 1000) / round_beat) * round_beat
 
 func track_looped():
