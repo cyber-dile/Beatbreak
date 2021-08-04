@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/arbiter.ogg-c0e99f7028d68f90a98ed30cfc236b0c.oggstr"
+path="res://.import/arbiter.ogg-ce5a895db829e271df3adac64b6891dc.oggstr"
 
 [deps]
 
-source_file="res://resources/charts/cd-arbiter-backup/arbiter.ogg"
-dest_files=[ "res://.import/arbiter.ogg-c0e99f7028d68f90a98ed30cfc236b0c.oggstr" ]
+source_file="res://example/cd-arbiter/arbiter.ogg"
+dest_files=[ "res://.import/arbiter.ogg-ce5a895db829e271df3adac64b6891dc.oggstr" ]
 
 [params]
 

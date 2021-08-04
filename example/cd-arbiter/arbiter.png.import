@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arbiter.png-2799092dcbaa5e46a2e01c92f329d6ae.stex"
+path="res://.import/arbiter.png-139e805f370d37f68427c5014bd0fbbf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/charts/cd-arbiter-backup/arbiter.png"
-dest_files=[ "res://.import/arbiter.png-2799092dcbaa5e46a2e01c92f329d6ae.stex" ]
+source_file="res://example/cd-arbiter/arbiter.png"
+dest_files=[ "res://.import/arbiter.png-139e805f370d37f68427c5014bd0fbbf.stex" ]
 
 [params]
 

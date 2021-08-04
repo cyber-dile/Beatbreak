@@ -43,6 +43,9 @@ func _process(dt):
 	var lc = Util.math.lerpc(.5,1.0/30.0,dt)
 	diff.color = diff.color.linear_interpolate(dest_color, lc)
 	outline.modulate = diff.color
+	var arrows = get_node_or_null("Settings/Arrows")
+	if (arrows):
+		arrows.modulate = diff.color
 	if (song and this_diff != song.charts[difficulty].difficulty):
 		var time = pow(.5,log(abs(song.charts[difficulty].difficulty - this_diff))) / 16
 		if (t - last_tick >= time):
