@@ -3,14 +3,12 @@ extends Node
 var list = []
 
 func sort_valid(a,b): return (0 if a.is_valid() else 1) < (0 if b.is_valid() else 1)
-func sort_name(a,b): return a.name < b.name
-func sort_artist(a,b): return a.artist < b.artist
+func sort_name(a,b): return a.name.to_upper() < b.name.to_upper()
+func sort_artist(a,b): return a.artist.to_upper() < b.artist.to_upper()
 
 func sort():
 	if (list.size() > 1):
-		list.sort_custom(self, "sort_name")
 		list.sort_custom(self, "sort_artist")
-		list.sort_custom(self, "sort_valid")
 
 func load_song(dir):
 	var f = File.new()
