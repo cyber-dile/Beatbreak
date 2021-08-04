@@ -5,7 +5,7 @@ var notes = []
 var unloaded_notes = []
 var loaded_notes = []
 var note_time = 2500
-var hit_window = 50
+var hit_window = 75
 var stage
 var beatmapper
 var note_template # set to an object to be cloned, with the same properties as classes/Note.gd
@@ -75,6 +75,7 @@ func create_note(note):
 
 func load_track(track):
 	track_data = track
+	track.sort()
 	for note in track.notes:
 		var new_note = create_note(note)
 		unloaded_notes.append(new_note)
