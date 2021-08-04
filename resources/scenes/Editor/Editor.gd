@@ -151,7 +151,7 @@ func add_track(input = null):
 		chart.tracks.append(exists)
 	var nt = track_ex.duplicate()
 	nt.name = str(trackbgs.get_children().size())
-	nt.get_node("Label").text = nt.name
+	nt.get_node("Label").text = str(trackbgs.get_children().size() + 1)
 	nt.visible = true
 	trackbgs.add_child(nt)
 	nt.rect_position = sidescroll.get_node("NewTrack").rect_position
