@@ -5,6 +5,7 @@ var notes = []
 var unloaded_notes = []
 var loaded_notes = []
 var note_time = 2500
+var hit_window = 50
 var stage
 var beatmapper
 var note_template # set to an object to be cloned, with the same properties as classes/Note.gd
@@ -54,11 +55,11 @@ func can_load_note(note):
 
 func is_note_missed(note):
 	var off = beatmapper.get_time() - beatmapper.get_time(note.beat)
-	return off > 100
+	return off > hit_window
 
 func is_note_hit(note):
 	var off = beatmapper.get_time() - beatmapper.get_time(note.beat)
-	return -100 <= off and off <= 100
+	return abs(off) <= hit_window
 
 func create_note(note):
 	var new_note
