@@ -173,7 +173,7 @@ func process_held_notes(dt):
 			else:
 				hold_note_hit(note)
 		elif (not input_threshold.held):
-			if (explicit_hold_release or is_hold_hit(note)):
+			if (not explicit_hold_release or is_hold_hit(note)):
 				hold_note_hit(note)
 			else:
 				hold_note_missed(note)
