@@ -3,14 +3,14 @@
 [ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/scenes/Stage/Pause.gd" type="Script" id=2]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 0.501961, 0, 0, 0, 0.752941 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 width = 720
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 48
 font_data = ExtResource( 1 )
 
@@ -19,18 +19,21 @@ size = 24
 font_data = ExtResource( 1 )
 
 [node name="Pause" type="Node2D"]
+z_index = 1001
 script = ExtResource( 2 )
 
 [node name="Gradient" type="Sprite" parent="."]
 position = Vector2( 640, 360 )
 rotation = 1.5708
 scale = Vector2( 1, 1280 )
-texture = SubResource( 3 )
+z_index = 1000
+z_as_relative = false
+texture = SubResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Paused!"
 align = 1
 valign = 1

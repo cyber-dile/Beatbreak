@@ -143,6 +143,7 @@ func set_beat_scale(s):
 	for track in trackcont.get_children():
 		for note in track.get_children():
 			note.scale = Vector2(1, invscale)
+			note.get_node("Hold").scale = Vector2(1, scale)
 
 func add_track(input = null):
 	var exists = input
@@ -174,6 +175,7 @@ func add_track(input = null):
 		new_note.track = trackcont.get_children().size() - 1
 		new_note.position = Vector2(0, -note.beat * 128)
 		new_note.visible = true
+		hold_visuals(new_note)
 		new_cont.add_child(new_note)
 
 func remove_track():
@@ -185,6 +187,25 @@ func remove_track():
 	beat_tick.rect_size -= Vector2(80, 0)
 	hitbar.rect_size -= Vector2(80, 0)
 	sidescroll.get_node("RemTrack").visible = trackbgs.get_children().size() != 0
+
+func hold_visuals(note_obj):
+	var h = 0
+	if (note_obj.note.data.get("hold")):
+		h = note_obj.note.data.get("hold")
+	if (h > 0):
+		note_obj.get_node("Hold").visible = true
+		note_obj.get_node("Hold/ColorRect").rect_size = Vector2(48, h * 128)
+		note_obj.get_node("Hold/ColorRect").rect_position = Vector2(-24, -h * 128)
+	else:
+		note_obj.get_node("Hold").visible = false
+
+func update_hold(dir):
+	for note in selection:
+		var ch = 0
+		if (note.data.get("hold")):
+			ch = note.data.hold
+		note.data["hold"] = max(0, ch + dir * (1.0/this_snap))
+		hold_visuals(note.object)
 
 func remove_note(note):
 	rem_selection(note.note)
@@ -215,6 +236,7 @@ func place_note(track, beat, remove = true, rnd = true):
 		new_note.track = track
 		new_note.position = Vector2(0, -beat * 128)
 		new_note.scale = Vector2(1, 128.0 / beat_tick.width)
+		new_note.get_node("Hold").scale = Vector2(1, beat_tick.width / 128.0)
 		trackcont.get_node(str(track)).add_child(new_note)
 		chart.tracks[track].notes.append(new_note.note)
 		return new_note
@@ -252,6 +274,8 @@ func duplicate_selection():
 		var new_notes = []
 		for note in selection:
 			var new_note = place_note(note.track, note.beat + off, false, false)
+			new_note.note.data = note.data.duplicate(true)
+			hold_visuals(new_note)
 			new_notes.append(new_note.note)
 		deselect_all()
 		for note in new_notes:
@@ -290,6 +314,7 @@ func get_track_range(border1, border2):
 func clicked(ev, b):
 	if (not get_node("BPMButton").is_hovered() and
 		not get_node("Snap").is_hovered() and
+		not get_node("Hold").is_hovered() and
 		not get_node("BackToMenu").is_hovered() and
 		not get_node("SaveToFile").is_hovered() and
 		not get_node("Import").is_hovered() and
@@ -309,12 +334,12 @@ func clicked(ev, b):
 func deselect_all():
 	for note in selection:
 		if (note != null):
-			note.object.get_node("ColorRect").color = Color(1,1,1)
+			note.object.modulate = Color(1,1,1)
 	selection = []
 
 func add_selection(note):
 	if (not selection.has(note)):
-		note.object.get_node("ColorRect").color = Color(1,.9,.5)
+		note.object.modulate = Color(1,.9,.5)
 		selection.append(note)
 
 func rem_selection(note):
@@ -361,6 +386,7 @@ func nudge(tracks,units):
 func click_released(ev, b):
 	if (not get_node("BPMButton").is_hovered() and
 		not get_node("Snap").is_hovered() and
+		not get_node("Hold").is_hovered() and
 		not get_node("BackToMenu").is_hovered() and
 		not get_node("SaveToFile").is_hovered() and
 		not get_node("Import").is_hovered() and
@@ -387,20 +413,25 @@ func click_released(ev, b):
 
 func scroll(dir):
 	if (state == "charting"):
-		var width = beat_tick.width
-		width = width * pow(1.1,dir)
-		width = max(4, min(width, 720))
-		set_beat_scale(width)
+		if (Input.is_key_pressed(KEY_SHIFT)):
+			hscroll -= 20 * dir
+		elif (Input.is_key_pressed(KEY_CONTROL)):
+			var width = beat_tick.width
+			width = width * pow(1.1,dir)
+			width = max(4, min(width, 720))
+			set_beat_scale(width)
+		else:
+			pos += beat_scale/16 * dir
 
 func _process(dt):
 	if (state == "charting"):
-		if Input.is_action_pressed("menu-left"):
+		if Input.is_action_pressed("scroll-left"):
 			hscroll -= dt * 1280 / 2
-		if Input.is_action_pressed("menu-right"):
+		if Input.is_action_pressed("scroll-right"):
 			hscroll += dt * 1280 / 2
-		if Input.is_action_pressed("menu-down"):
+		if Input.is_action_pressed("scroll-down"):
 			pos -= dt * beat_scale
-		if Input.is_action_pressed("menu-up"):
+		if Input.is_action_pressed("scroll-up"):
 			pos += dt * beat_scale
 	
 	if (start_select_pos):
@@ -447,13 +478,13 @@ func _input(ev):
 				elif (state == "playing"):
 					state = "charting"
 					beatmapper.stop()
-		elif (ev.is_action_pressed("nudge-up")):
+		elif (ev.is_action_pressed("menu-up")):
 			nudge(0,1)
-		elif (ev.is_action_pressed("nudge-down")):
+		elif (ev.is_action_pressed("menu-down")):
 			nudge(0,-1)
-		elif (ev.is_action_pressed("nudge-left")):
+		elif (ev.is_action_pressed("menu-left")):
 			nudge(-1,0)
-		elif (ev.is_action_pressed("nudge-right")):
+		elif (ev.is_action_pressed("menu-right")):
 			nudge(1,0)
 		elif (ev.is_action_pressed("delete-selection")):
 			remove_all_notes()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/game/white.png" type="Texture" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://resources/scenes/Editor/Scripts/ColorEnter.gd" type="Script" id=24]
 [ext_resource path="res://resources/scenes/Editor/Scripts/PropEditor.gd" type="Script" id=25]
 [ext_resource path="res://resources/scenes/Editor/Scripts/BPMEditor.gd" type="Script" id=26]
+[ext_resource path="res://resources/scenes/Editor/Scripts/SongEditor.gd" type="Script" id=27]
+[ext_resource path="res://assets/game/hold.png" type="Texture" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -303,6 +305,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Hold" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 528.0
+margin_right = 64.0
+margin_bottom = 576.0
+hint_tooltip = "Increase (Shift to decrease) the hold length of your selection by your snap"
+texture_normal = ExtResource( 28 )
+expand = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
 [node name="SaveToFile" type="TextureButton" parent="."]
 margin_left = 1216.0
 margin_top = 16.0
@@ -358,7 +374,7 @@ margin_left = 1216.0
 margin_top = 656.0
 margin_right = 1264.0
 margin_bottom = 704.0
-hint_tooltip = "Import .sm file (All notes will get converted to single taps)"
+hint_tooltip = "Import .sm file (4 new tracks will be added)"
 texture_normal = ExtResource( 9 )
 expand = true
 script = ExtResource( 17 )
@@ -387,6 +403,18 @@ margin_left = -32.0
 margin_top = -4.0
 margin_right = 32.0
 margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hold" type="Node2D" parent="NoteEx"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="NoteEx/Hold"]
+margin_left = -24.0
+margin_top = -128.0
+margin_right = 24.0
+color = Color( 1, 1, 1, 0.501961 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -521,6 +549,7 @@ visible = false
 margin_right = 1280.0
 margin_bottom = 720.0
 color = Color( 0, 0, 0, 0.392157 )
+script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -553,8 +582,11 @@ margin_left = 32.0
 margin_right = 288.0
 margin_bottom = 32.0
 custom_fonts/font = SubResource( 6 )
-text = "Edit BPM Marker"
+text = "Edit Song Settings"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureButton" type="TextureButton" parent="SongEditor/BG"]
 margin_left = 612.0
@@ -856,7 +888,7 @@ margin_left = -264.0
 margin_right = -8.0
 margin_bottom = 32.0
 custom_fonts/font = SubResource( 8 )
-text = "Delete Marker"
+text = "Delete Chart"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
