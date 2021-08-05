@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/game/white.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://resources/scenes/Editor/Scripts/BPMEditor.gd" type="Script" id=26]
 [ext_resource path="res://resources/scenes/Editor/Scripts/SongEditor.gd" type="Script" id=27]
 [ext_resource path="res://assets/game/hold.png" type="Texture" id=28]
+[ext_resource path="res://resources/scenes/Editor/scripts/Hold.gd" type="Script" id=29]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -313,7 +314,7 @@ margin_bottom = 576.0
 hint_tooltip = "Increase (Shift to decrease) the hold length of your selection by your snap"
 texture_normal = ExtResource( 28 )
 expand = true
-script = ExtResource( 15 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""

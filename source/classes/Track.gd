@@ -42,7 +42,11 @@ func set_input(value):
 
 func get_input():
 	if (automatic):
-		if (loaded_notes.size() > 0 and beatmapper.get_beat() > loaded_notes[0].beat):
+		if (held_notes.size() > 0):
+			if (beatmapper.get_beat() < held_notes[0].beat + held_notes[0].note.data.hold):
+				return true
+			return false
+		if ((loaded_notes.size() > 0 and beatmapper.get_beat() > loaded_notes[0].beat)):
 			return true
 		return false
 	if (not (input is Array)):
