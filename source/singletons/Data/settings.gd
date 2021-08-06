@@ -59,3 +59,4 @@ func get_setting(song, setting):
 	for new_setting in list:
 		if new_setting[0] == setting:
 			return new_setting
+	return [setting, null, 0]
