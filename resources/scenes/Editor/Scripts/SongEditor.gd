@@ -25,6 +25,7 @@ func close_chart():
 	menu.chart.color = get_node("BG/ChartColor/ColorEnter").get_value()
 	menu.song.players = max(1, get_node("BG/Players/NumberEnter").get_value())
 	menu.update_song()
+	Data.songs.sort()
 
 func _ready():
 	delete.connect("pressed", self, "delete_chart")

@@ -47,4 +47,73 @@ func get_hex(c):
 	g = "%02X" % g
 	b = "%02X" % b
 	return r + g + b
+
+func sort_sm_bpm(a,b):
+	return a[0] < b[0]
+
+func imp_sm(path):
+	var f = File.new()
+	var err = f.open(path, File.READ)
+	if (err != OK):
+		return
+	var line = f.get_line()
+	var data = {}
+	data["bpm"] = []
+	data["tracks"] = [[],[],[],[]]
+	var measures = []
+	var measure = []
+	while (not f.eof_reached()):
+		if (line.substr(0,6) == "#BPMS:"):
+			var bpms = []
+			var type = 0
+			var ind = ""
+			var val = ""
+			for i in range(6,line.length()):
+				var c = line.substr(i, 1)
+				match (c):
+					"=":
+						type = 1
+					";":
+						bpms.append([float(ind), float(val)])
+						ind = ""
+						val = ""
+						type = 0
+					_:
+						match (type):
+							0:
+								ind += c
+							1:
+								val += c
+			bpms.sort_custom(self, "sort_sm_bpm")
+			data.bpm = bpms
+		elif (line.substr(0,1) == "," or line.substr(0,1) == ";"):
+			measures.append(measure)
+			measure = []
+		elif (line.length() == 4):
+			var notes = []
+			for i in range(4):
+				notes.append(line.substr(i, 1))
+			measure.append(notes)
+		line = f.get_line()
+	f.close()
 	
+	var holds = [null, null, null, null]
+	var beat = 1
+	for m in measures:
+		var nsz = 4.0 / m.size()
+		for notes in m:
+			for track in range(notes.size()):
+				var type = notes[track]
+				match type:
+					"1": data.tracks[track].append([beat])
+					"2", "4":
+						var t = [beat, 0]
+						holds[track] = t
+						data.tracks[track].append(t)
+					"3":
+						if (holds[track]):
+							holds[track][1] = beat - holds[track][0]
+						holds[track] = null
+			beat += nsz
+	
+	return data

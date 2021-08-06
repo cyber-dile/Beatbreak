@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/game/white.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://resources/scenes/Editor/Scripts/SongEditor.gd" type="Script" id=27]
 [ext_resource path="res://assets/game/hold.png" type="Texture" id=28]
 [ext_resource path="res://resources/scenes/Editor/scripts/Hold.gd" type="Script" id=29]
+[ext_resource path="res://resources/scenes/Editor/scripts/ImportSMFile.gd" type="Script" id=30]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -1145,6 +1146,7 @@ margin_right = 476.0
 margin_bottom = 156.0
 texture_normal = ExtResource( 9 )
 expand = true
+script = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1168,7 +1170,7 @@ margin_right = 198.0
 margin_bottom = 112.0
 custom_fonts/font = SubResource( 7 )
 text = "File Dir
-(Relative to user://)"
+(Appdata folder is user://)"
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
