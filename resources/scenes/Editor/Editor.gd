@@ -49,7 +49,14 @@ func bpm_button_pressed():
 func btm_button_pressed():
 	for track in chart.tracks:
 		track.sort()
+	Data.data.back_to_editor = false
 	get_tree().change_scene("res://resources/scenes/EditorSelect/EditorSelect.tscn")
+
+func test_button_pressed():
+	for track in chart.tracks:
+		track.sort()
+	Data.data.back_to_editor = true
+	get_tree().change_scene("res://resources/scenes/Stage/Stage.tscn")
 
 func duplicate_button_pressed():
 	get_node("Duplicate").release_focus()
@@ -89,6 +96,7 @@ func _ready():
 	beatmapper.connect("finished", self, "beatmapper_finished")
 	get_node("BPMButton").connect("pressed", self, "bpm_button_pressed")
 	get_node("BackToMenu").connect("pressed", self, "btm_button_pressed")
+	get_node("TestSong").connect("pressed", self, "test_button_pressed")
 	get_node("Duplicate").connect("pressed", self, "duplicate_button_pressed")
 	se.get_node("BG/TextureButton").connect("pressed", self, "close_se")
 	get_node("SaveToFile").connect("pressed", self, "save_file")

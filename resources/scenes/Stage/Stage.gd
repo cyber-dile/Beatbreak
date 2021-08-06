@@ -11,7 +11,10 @@ var preview = false
 var paused = false
 
 func exit():
-	get_tree().change_scene("res://resources/scenes/Select/Select.tscn")
+	var scene_path = "res://resources/scenes/Select/Select.tscn"
+	if (Data.data.back_to_editor):
+		scene_path = "res://resources/scenes/Editor/Editor.tscn"
+	get_tree().change_scene(scene_path)
 
 func end():
 	var finals = []
@@ -26,7 +29,7 @@ func _ready():
 	chart = song.charts[Data.data.get("selected_difficulty")]
 	
 	if (song.song_path.length() == 0 or song.scene_path.length() == 0):
-		get_tree().change_scene("res://resources/scenes/Select/Select.tscn")
+		exit()
 		return
 	
 	for i in range(song.players):

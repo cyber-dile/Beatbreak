@@ -6,7 +6,8 @@ func clicked():
 	
 	var sm = Util.data.imp_sm(path)
 	if (sm):
-		editor.song.bpm = sm.bpm
+		if (not Input.is_key_pressed(KEY_SHIFT)):
+			editor.song.bpm = sm.bpm
 		
 		for track in sm.tracks:
 			var nt = TrackData.new()

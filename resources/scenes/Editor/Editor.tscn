@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/game/white.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/game/hold.png" type="Texture" id=28]
 [ext_resource path="res://resources/scenes/Editor/scripts/Hold.gd" type="Script" id=29]
 [ext_resource path="res://resources/scenes/Editor/scripts/ImportSMFile.gd" type="Script" id=30]
+[ext_resource path="res://assets/game/testSong.png" type="Texture" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -340,6 +341,18 @@ margin_right = 64.0
 margin_bottom = 64.0
 hint_tooltip = "Go back to the menu (Will keep edits in memory- will not be overwritten until game restart)"
 texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestSong" type="TextureButton" parent="."]
+margin_left = 80.0
+margin_top = 16.0
+margin_right = 128.0
+margin_bottom = 64.0
+hint_tooltip = "Go back to the menu (Will keep edits in memory- will not be overwritten until game restart)"
+texture_normal = ExtResource( 31 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1156,6 +1169,7 @@ margin_left = 452.0
 margin_top = 4.0
 margin_right = 476.0
 margin_bottom = 28.0
+hint_tooltip = "Hold shift to leave BPM unchanged"
 texture_normal = ExtResource( 20 )
 expand = true
 script = ExtResource( 22 )
