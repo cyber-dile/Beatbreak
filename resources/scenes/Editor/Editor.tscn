@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/fonts/ostrich-sans/OstrichSans-Black.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/game/white.png" type="Texture" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://resources/scenes/Editor/scripts/Hold.gd" type="Script" id=29]
 [ext_resource path="res://resources/scenes/Editor/scripts/ImportSMFile.gd" type="Script" id=30]
 [ext_resource path="res://assets/game/testSong.png" type="Texture" id=31]
+[ext_resource path="res://resources/scenes/Editor/scripts/Playback.gd" type="Script" id=32]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -302,6 +303,32 @@ margin_right = 48.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 5 )
 text = "1/2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Playback" type="TextureButton" parent="."]
+margin_left = 1216.0
+margin_top = 528.0
+margin_right = 1264.0
+margin_bottom = 576.0
+hint_tooltip = "Change playback speed- left click to increase, right click to decrease"
+button_mask = 3
+texture_normal = ExtResource( 2 )
+expand = true
+script = ExtResource( 32 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Playback"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 48.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+text = "100%"
 align = 1
 valign = 1
 __meta__ = {

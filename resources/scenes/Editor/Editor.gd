@@ -119,6 +119,11 @@ func update_snap(nudge):
 	this_snap = max(1, min(32, this_snap))
 	get_node("Snap/Label").text = "1/" + str(this_snap)
 
+func update_pb(nudge):
+	beatmapper.pitch_scale += nudge / 20.0
+	beatmapper.pitch_scale = clamp(beatmapper.pitch_scale, 1/20.0, 1)
+	get_node("Playback/Label").text = str(round(beatmapper.pitch_scale * 100)) + "%"
+
 func update_song():
 	var ogg = Util.data.read_ogg(song.song_path)
 	if (ogg is AudioStreamOGGVorbis):
@@ -319,15 +324,15 @@ func get_track_range(border1, border2):
 	if (first >= 0 and last >= 0):
 		return range(first, last + 1)
 
+func not_on_button():
+	var arr = ["BPMButton", "Snap", "Hold", "BackToMenu", "SaveToFile", "Import", "Duplicate", "SongSettings", "Playback"]
+	for item in arr:
+		if get_node(item).is_hovered():
+			return false
+	return true
+
 func clicked(ev, b):
-	if (not get_node("BPMButton").is_hovered() and
-		not get_node("Snap").is_hovered() and
-		not get_node("Hold").is_hovered() and
-		not get_node("BackToMenu").is_hovered() and
-		not get_node("SaveToFile").is_hovered() and
-		not get_node("Import").is_hovered() and
-		not get_node("Duplicate").is_hovered() and
-		not get_node("SongSettings").is_hovered()):
+	if (not_on_button()):
 		if (state == "charting"):
 			if (b == 1):
 				var hovered = get_track_point(ev.position.x)
@@ -392,14 +397,7 @@ func nudge(tracks,units):
 			
 
 func click_released(ev, b):
-	if (not get_node("BPMButton").is_hovered() and
-		not get_node("Snap").is_hovered() and
-		not get_node("Hold").is_hovered() and
-		not get_node("BackToMenu").is_hovered() and
-		not get_node("SaveToFile").is_hovered() and
-		not get_node("Import").is_hovered() and
-		not get_node("Duplicate").is_hovered() and
-		not get_node("SongSettings").is_hovered()):
+	if (not_on_button()):
 		if (b == 2):
 			if (start_select_pos):
 				var np = start_select_pos - Vector2(hscroll, 0)

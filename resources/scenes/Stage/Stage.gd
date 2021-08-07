@@ -15,6 +15,7 @@ func exit():
 	if (Data.data.back_to_editor):
 		scene_path = "res://resources/scenes/Editor/Editor.tscn"
 	get_tree().change_scene(scene_path)
+	get_tree().paused = false
 
 func end():
 	var finals = []
@@ -51,9 +52,11 @@ func pause():
 		pause_menu.visible = paused
 		beatmapper.stream_paused = paused
 		if (paused):
+			get_tree().paused = true
 			scene.pause_mode = PAUSE_MODE_STOP
 			pause_menu.entered()
 		else:
+			get_tree().paused = false
 			scene.pause_mode = PAUSE_MODE_INHERIT
 			pause_menu.left()
 

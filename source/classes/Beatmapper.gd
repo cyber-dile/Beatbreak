@@ -78,7 +78,7 @@ func get_time(beat = null):
 	return (this_beat[0] + (beat - this_beat[2]) / this_beat[1] * 60000) / pitch_scale + song_offset
 
 func seek_beat(beat):
-	seek(clamp(get_time(beat) / 1000, 0, stream.get_length()))
+	seek(clamp(get_time(beat) / 1000 * pitch_scale, 0, stream.get_length()))
 
 func set_loop(new, round_beat: float = 1.0):
 	reset()
