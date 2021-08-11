@@ -75,7 +75,7 @@ func get_time(beat = null):
 	for beat_change in bpm:
 		if beat > beat_change[2]:
 			this_beat = beat_change
-	return (this_beat[0] + (beat - this_beat[2]) / this_beat[1] * 60000) / pitch_scale + song_offset
+	return (this_beat[0] + (beat - this_beat[2]) / this_beat[1] * 60000.0) / pitch_scale + song_offset
 
 func seek_beat(beat):
 	seek(clamp(get_time(beat) / 1000 * pitch_scale, 0, stream.get_length()))

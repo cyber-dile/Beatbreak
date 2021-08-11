@@ -176,9 +176,16 @@ func select():
 						new_chart.difficulty += 1
 				new_chart.difficulty = max(0, min(999, new_chart.difficulty))
 				song.charts.append(new_chart)
-				nudge_difficulty(song.charts.size() - 1 - labels[selection].difficulty)
-				button_select = 0
-				select()
+				
+				visible = false
+				state = ""
+				Data.data.set("selected_song", songs[selection])
+				Data.data.set("selected_difficulty", song.charts.size() - 1)
+				for child in get_node("Viewport/SubViewport").get_children():
+					child.free()
+				
+				yield(get_tree().create_timer(0.5), "timeout")
+				get_tree().change_scene("res://resources/scenes/Editor/Editor.tscn")
 	elif (state == "settings"):
 		var sett = songs[selection].settings[sett_sel]
 		match (sett[1]):
