@@ -1,5 +1,5 @@
 ![Beatbreak logo](https://raw.githubusercontent.com/cyber-dile/Beatbreak/main/assets/game/beatbreakGithub.png)
-<p align="center"> ![](https://img.shields.io/github/v/release/cyber-dile/Beatbreak?style=flat-square) ![](https://img.shields.io/github/downloads/cyber-dile/Beatbreak/total?style=flat-square) ![](https://img.shields.io/github/license/cyber-dile/Beatbreak?style=flat-square) </p>
+![](https://img.shields.io/github/v/release/cyber-dile/Beatbreak?style=flat-square) ![](https://img.shields.io/github/downloads/cyber-dile/Beatbreak/total?style=flat-square) ![](https://img.shields.io/github/license/cyber-dile/Beatbreak?style=flat-square)
 ---
 ## Beatbreak
 **Beatbreak is a rhythm game with a focus on user-generated content.** Charts can be made in Beatbreak's in-game editor, or exported from .sm files, where they can then be linked to Godot packages that are loaded in from a folder on the player's computer. It provides the framework for any kind of rhythm game, that can then be utilized by developers to create unique maps that otherwise wouldn't be possible in other frameworks, due to its control style or game limitations.
