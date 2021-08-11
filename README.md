@@ -1,4 +1,4 @@
-![Beatbreak logo](https://raw.githubusercontent.com/cyber-dile/Beatbreak/main/assets/game/beatbreakLogoBig.png)
+![Beatbreak logo](https://raw.githubusercontent.com/cyber-dile/Beatbreak/main/assets/game/beatbreakGithub.png)
 <p align="center"> ![](https://img.shields.io/github/v/release/cyber-dile/Beatbreak?style=flat-square) ![](https://img.shields.io/github/downloads/cyber-dile/Beatbreak/total?style=flat-square) ![](https://img.shields.io/github/license/cyber-dile/Beatbreak?style=flat-square) </p>
 ---
 ## Beatbreak
